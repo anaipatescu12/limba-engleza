@@ -1,1 +1,603 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Limba Engleză — Liceul Teoretic „Ana Ipătescu"</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --en: #7b1d1d;
+  --en-light: #fdf0f0;
+  --en-mid: #b83232;
+  --gold: #7a5c00;
+  --gold-light: #fdf8e6;
+  --gold-mid: #c9960c;
+  --accent: #2c5f8a;
+  --accent-light: #e8f1f8;
+  --dark: #1a0f0f;
+  --text: #2a1a1a;
+  --muted: #7a6060;
+  --border: #ecdede;
+  --bg: #fdf9f9;
+  --white: #ffffff;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --radius: 16px;
+  --radius-sm: 10px;
+}
 
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family:var(--sans); background:var(--bg); color:var(--text); line-height:1.6; overflow-x:hidden; }
+
+/* ===== NAV ===== */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:rgba(255,255,255,0.92); backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:0 40px; display:flex; align-items:center; justify-content:space-between; height:64px;
+}
+.nav-logo { font-family:var(--serif); font-size:1.2rem; color:var(--text); text-decoration:none; display:flex; align-items:center; gap:10px; }
+.nav-logo .logo-icon { width:32px; height:32px; background:linear-gradient(135deg,var(--en),var(--gold-mid)); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:14px; color:white; }
+.nav-links { display:flex; gap:32px; list-style:none; }
+.nav-links a { font-size:0.875rem; color:var(--muted); text-decoration:none; font-weight:500; transition:color 0.2s; letter-spacing:0.02em; }
+.nav-links a:hover { color:var(--text); }
+
+/* ===== HERO ===== */
+.hero { min-height:100vh; display:grid; grid-template-columns:1fr 1fr; padding-top:64px; overflow:hidden; }
+.hero-left { padding:80px 60px 80px 80px; display:flex; flex-direction:column; justify-content:center; }
+.hero-eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:0.8rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:24px; }
+.hero-eyebrow::before { content:''; display:block; width:24px; height:2px; background:var(--en-mid); }
+.hero h1 { font-family:var(--serif); font-size:clamp(3rem,5vw,5rem); line-height:1.08; color:var(--dark); margin-bottom:24px; }
+.hero h1 em { font-style:italic; color:var(--en); }
+.hero-sub { font-size:1.1rem; color:var(--muted); max-width:440px; margin-bottom:48px; line-height:1.7; }
+.hero-cta { display:flex; gap:16px; align-items:center; }
+.btn-primary { display:inline-flex; align-items:center; gap:8px; background:var(--dark); color:white; padding:14px 28px; border-radius:50px; font-size:0.9rem; font-weight:500; text-decoration:none; transition:all 0.25s; }
+.btn-primary:hover { background:var(--en); transform:translateY(-1px); box-shadow:0 8px 24px rgba(123,29,29,0.25); }
+.btn-ghost { display:inline-flex; align-items:center; gap:8px; color:var(--muted); font-size:0.9rem; font-weight:500; text-decoration:none; transition:color 0.2s; }
+.btn-ghost:hover { color:var(--text); }
+
+.hero-right { position:relative; background:var(--dark); overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.hero-canvas { position:absolute; inset:0; opacity:0.12; }
+.hero-visual { position:relative; z-index:2; display:grid; grid-template-columns:1fr 1fr; gap:2px; width:100%; height:100%; }
+.hero-panel { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:40px; gap:16px; }
+.hero-panel.en { background:rgba(184,50,50,0.12); }
+.hero-panel.gd { background:rgba(201,150,12,0.10); }
+.hero-panel-icon { width:80px; height:80px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2.2rem; }
+.en .hero-panel-icon { background:rgba(184,50,50,0.2); }
+.gd .hero-panel-icon { background:rgba(201,150,12,0.15); }
+.hero-panel h3 { font-family:var(--serif); font-size:1.5rem; color:white; }
+.hero-panel p { font-size:0.875rem; color:rgba(255,255,255,0.55); text-align:center; line-height:1.6; }
+
+/* ===== LAYOUT ===== */
+.container { max-width:1140px; margin:0 auto; padding:0 40px; }
+section { padding:96px 0; }
+
+.section-tag { display:inline-flex; align-items:center; gap:8px; font-size:0.75rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:16px; }
+.section-tag.en { color:var(--en); }
+.section-tag.gd { color:var(--gold); }
+.section-tag.ac { color:var(--accent); }
+
+.section-title { font-family:var(--serif); font-size:clamp(2rem,3.5vw,3rem); line-height:1.15; color:var(--dark); margin-bottom:16px; }
+.section-desc { font-size:1.05rem; color:var(--muted); max-width:560px; line-height:1.75; margin-bottom:56px; }
+
+/* ===== STATS ===== */
+.stats-bar { background:var(--dark); }
+.stats-inner { display:grid; grid-template-columns:repeat(4,1fr); }
+.stat-item { padding:40px; border-right:1px solid rgba(255,255,255,0.08); text-align:center; }
+.stat-item:last-child { border-right:none; }
+.stat-num { font-family:var(--serif); font-size:2.8rem; color:white; display:block; line-height:1; margin-bottom:8px; }
+.stat-label { font-size:0.8rem; color:rgba(255,255,255,0.4); font-weight:500; letter-spacing:0.06em; text-transform:uppercase; }
+
+/* ===== WHY CARDS ===== */
+.why-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:2px; border-radius:var(--radius); overflow:hidden; box-shadow:0 2px 40px rgba(0,0,0,0.06); }
+.why-card { background:var(--white); padding:48px; transition:background 0.3s; cursor:default; position:relative; overflow:hidden; }
+.why-card::before { content:''; position:absolute; inset:0; opacity:0; transition:opacity 0.3s; }
+.why-card.c-en::before { background:var(--en-light); }
+.why-card.c-gd::before { background:var(--gold-light); }
+.why-card.c-ac::before { background:var(--accent-light); }
+.why-card.c-dk::before { background:#f5f0f0; }
+.why-card:hover::before { opacity:1; }
+.why-card > * { position:relative; z-index:1; }
+.why-icon { width:52px; height:52px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; margin-bottom:24px; }
+.c-en .why-icon { background:var(--en-light); color:var(--en); }
+.c-gd .why-icon { background:var(--gold-light); color:var(--gold); }
+.c-ac .why-icon { background:var(--accent-light); color:var(--accent); }
+.c-dk .why-icon { background:#ede8e8; color:var(--text); }
+.why-card h3 { font-family:var(--serif); font-size:1.4rem; margin-bottom:14px; color:var(--dark); }
+.why-card p { font-size:0.95rem; color:var(--muted); line-height:1.75; }
+
+/* ===== TEACHERS ===== */
+#profesori { background:var(--dark); }
+#profesori .section-tag { color:rgba(255,255,255,0.4); }
+#profesori .section-title { color:white; }
+#profesori .section-desc { color:rgba(255,255,255,0.5); }
+
+.dept-label { font-size:0.75rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; padding:6px 14px; border-radius:50px; display:inline-block; margin-bottom:32px; }
+.dept-label.en { background:rgba(184,50,50,0.15); color:#e87575; }
+
+.teachers-row { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:40px; }
+.teacher-card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:var(--radius); padding:32px 28px; display:flex; align-items:center; gap:20px; transition:all 0.3s; }
+.teacher-card:hover { background:rgba(255,255,255,0.07); border-color:rgba(255,255,255,0.15); transform:translateY(-2px); }
+.teacher-avatar { width:68px; height:68px; border-radius:50%; object-fit:cover; flex-shrink:0; border:2px solid rgba(255,255,255,0.1); }
+.teacher-avatar-placeholder { width:68px; height:68px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:1.4rem; color:white; background:rgba(184,50,50,0.3); }
+.teacher-info h4 { font-family:var(--serif); font-size:1.05rem; color:white; margin-bottom:4px; }
+.teacher-info span { font-size:0.8rem; font-weight:500; color:#e87575; }
+
+/* ===== ACTIVITIES ===== */
+.activities-layout { display:grid; grid-template-columns:5fr 4fr; gap:48px; align-items:start; }
+.activities-feature { display:flex; flex-direction:column; gap:16px; }
+.activity-item { background:var(--white); border:1px solid var(--border); border-radius:var(--radius-sm); padding:24px 28px; display:flex; align-items:flex-start; gap:18px; transition:all 0.25s; }
+.activity-item:hover { border-color:var(--en-mid); box-shadow:0 4px 16px rgba(184,50,50,0.08); transform:translateX(4px); }
+.activity-num { font-family:var(--serif); font-size:1.8rem; font-style:italic; color:var(--border); line-height:1; min-width:36px; }
+.activity-content h4 { font-weight:600; font-size:0.95rem; color:var(--dark); margin-bottom:4px; }
+.activity-content p { font-size:0.875rem; color:var(--muted); line-height:1.6; }
+
+/* ===== MEDIA ===== */
+.media-section { background:var(--white); }
+
+.media-grid {
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  grid-template-rows:220px 220px;
+  gap:12px;
+  border-radius:var(--radius);
+  overflow:hidden;
+  margin-bottom:40px;
+}
+.media-item { background:var(--border); position:relative; overflow:hidden; min-height:180px; }
+.media-item:first-child { grid-row:span 2; }
+.media-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s ease; }
+.media-item:hover img { transform:scale(1.04); }
+.media-label { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent,rgba(0,0,0,0.65)); color:white; padding:24px 16px 14px; font-size:0.8rem; font-weight:600; letter-spacing:0.04em; opacity:0; transition:opacity 0.3s; }
+.media-item:hover .media-label { opacity:1; }
+.media-placeholder { background:linear-gradient(135deg,var(--en-light),var(--gold-light)); display:flex; align-items:center; justify-content:center; font-size:2.5rem; width:100%; height:100%; position:absolute; inset:0; }
+
+/* Video embed box */
+.video-embed-box {
+  position:relative;
+  width:100%;
+  height:100%;
+  background:#000;
+}
+.video-embed-box iframe {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:none;
+}
+
+/* Native video */
+.media-item video { width:100%; height:100%; object-fit:cover; display:block; }
+
+/* Sub-label for gallery sections */
+.gallery-label {
+  font-size:0.75rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
+  padding:6px 14px; border-radius:50px; display:inline-block; margin-bottom:20px;
+}
+.gallery-label.en { background:rgba(184,50,50,0.1); color:var(--en); }
+.gallery-label.gd { background:rgba(201,150,12,0.1); color:var(--gold); }
+.gallery-label.ac { background:rgba(44,95,138,0.1); color:var(--accent); }
+
+/* ===== TESTIMONIALS ===== */
+.testimonials-section { background:linear-gradient(to bottom right,var(--en-light),var(--gold-light)); position:relative; overflow:hidden; }
+.testimonials-section::before { content:'"'; position:absolute; top:-60px; left:40px; font-family:var(--serif); font-size:400px; color:var(--en); opacity:0.04; line-height:1; pointer-events:none; }
+.testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.testimonial-card { background:var(--white); border-radius:var(--radius); padding:36px 32px; box-shadow:0 2px 20px rgba(0,0,0,0.04); position:relative; }
+.testimonial-card::before { content:'"'; font-family:var(--serif); font-size:4rem; color:var(--en); opacity:0.2; position:absolute; top:12px; left:24px; line-height:1; }
+.testimonial-card blockquote { font-family:var(--serif); font-style:italic; font-size:1.1rem; color:var(--dark); line-height:1.6; margin-bottom:20px; padding-top:20px; }
+.testimonial-author { display:flex; align-items:center; gap:12px; }
+.author-dot { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:white; }
+.testimonial-author span { font-size:0.85rem; font-weight:600; color:var(--muted); }
+
+/* ===== FOOTER ===== */
+footer { background:var(--dark); color:rgba(255,255,255,0.4); padding:48px 0; text-align:center; }
+footer .footer-logo { font-family:var(--serif); font-size:1.4rem; color:white; margin-bottom:12px; }
+footer p { font-size:0.85rem; }
+footer strong { color:rgba(255,255,255,0.7); }
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+.animate-in { opacity:0; animation:fadeUp 0.6s ease forwards; }
+.delay-1{animation-delay:0.1s} .delay-2{animation-delay:0.2s} .delay-3{animation-delay:0.3s}
+.reveal { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease,transform 0.6s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  nav{padding:0 20px} .nav-links{display:none}
+  .hero{grid-template-columns:1fr} .hero-right{height:400px} .hero-left{padding:60px 24px}
+  .container{padding:0 20px}
+  .why-grid{grid-template-columns:1fr}
+  .teachers-row{grid-template-columns:1fr}
+  .activities-layout{grid-template-columns:1fr}
+  .media-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .media-item:first-child{grid-row:span 1}
+  .testimonials-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-icon"><i class="fas fa-book-open"></i></div>
+    Limba Engleză
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">Despre</a></li>
+    <li><a href="#profesori">Profesori</a></li>
+    <li><a href="#activitati">Activități</a></li>
+    <li><a href="#galerie">Galerie</a></li>
+    <li><a href="#elevi">Elevi</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-left">
+    <p class="hero-eyebrow animate-in">Liceul Teoretic „Ana Ipătescu" · Gherla</p>
+    <h1 class="animate-in delay-1">Lumea prin <em>cuvinte</em> și cultură</h1>
+    <p class="hero-sub animate-in delay-2">Engleza nu este doar o limbă — este o poartă spre lume. De la literatura clasică la comunicarea modernă, deschidem orizonturi noi.</p>
+    <div class="hero-cta animate-in delay-3">
+      <a href="#profesori" class="btn-primary"><i class="fas fa-users"></i> Cunoaște echipa</a>
+      <a href="#activitati" class="btn-ghost">Activitățile noastre <i class="fas fa-arrow-right" style="font-size:0.8em"></i></a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <svg class="hero-canvas" viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg">
+      <text x="40"  y="220" font-family="Georgia,serif" font-size="200" fill="#e87575" opacity="0.1" font-style="italic">A</text>
+      <text x="280" y="460" font-family="Georgia,serif" font-size="160" fill="#e8c05a" opacity="0.07" font-style="italic">B</text>
+      <text x="80"  y="660" font-family="Georgia,serif" font-size="130" fill="#e87575" opacity="0.06" font-style="italic">C</text>
+      <line x1="40" y1="100" x2="560" y2="100" stroke="#e87575" stroke-width="0.5" opacity="0.15"/>
+      <line x1="40" y1="140" x2="560" y2="140" stroke="#e87575" stroke-width="0.5" opacity="0.1"/>
+      <line x1="40" y1="180" x2="560" y2="180" stroke="#e87575" stroke-width="0.5" opacity="0.07"/>
+      <line x1="40" y1="640" x2="560" y2="640" stroke="#e8c05a" stroke-width="0.5" opacity="0.12"/>
+      <line x1="40" y1="680" x2="560" y2="680" stroke="#e8c05a" stroke-width="0.5" opacity="0.08"/>
+      <circle cx="80"  cy="460" r="4" fill="#e87575" opacity="0.3"/>
+      <circle cx="480" cy="200" r="3" fill="#e8c05a" opacity="0.25"/>
+      <circle cx="520" cy="550" r="5" fill="#e87575" opacity="0.2"/>
+      <circle cx="150" cy="720" r="3" fill="#e8c05a" opacity="0.25"/>
+      <rect x="440" y="440" width="50" height="60" rx="3" fill="none" stroke="#e87575" stroke-width="1" opacity="0.2"/>
+      <line x1="465" y1="440" x2="465" y2="500" stroke="#e87575" stroke-width="0.5" opacity="0.2"/>
+      <rect x="80"  y="300" width="40" height="50" rx="3" fill="none" stroke="#e8c05a" stroke-width="1" opacity="0.18"/>
+      <line x1="100" y1="300" x2="100" y2="350" stroke="#e8c05a" stroke-width="0.5" opacity="0.18"/>
+    </svg>
+    <div class="hero-visual">
+      <div class="hero-panel en">
+        <div class="hero-panel-icon">📚</div>
+        <h3>Literatură</h3>
+        <p>Shakespeare, Dickens și scriitorii contemporani</p>
+      </div>
+      <div class="hero-panel gd">
+        <div class="hero-panel-icon">🌍</div>
+        <h3>Comunicare</h3>
+        <p>Fluență, prezentări și competențe globale</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item reveal"><span class="stat-num">5</span><span class="stat-label">Profesori</span></div>
+    <div class="stat-item reveal"><span class="stat-num">B2+</span><span class="stat-label">Nivel mediu</span></div>
+    <div class="stat-item reveal"><span class="stat-num">🏆</span><span class="stat-label">Concursuri</span></div>
+    <div class="stat-item reveal"><span class="stat-num">🌍</span><span class="stat-label">Proiecte internaționale</span></div>
+  </div>
+</div>
+
+<!-- WHY -->
+<section id="activitati">
+  <div class="container">
+    <p class="section-tag en reveal"><i class="fas fa-star"></i> De ce contează</p>
+    <h2 class="section-title reveal">Mai mult decât<br>o limbă străină</h2>
+    <p class="section-desc reveal">Engleza este cheia spre oportunități globale — în carieră, cultură și conexiuni umane.</p>
+    <div class="why-grid reveal">
+      <div class="why-card c-en">
+        <div class="why-icon"><i class="fas fa-book-open"></i></div>
+        <h3>De ce Engleză?</h3>
+        <p>Engleza este limba universală a științei, afacerilor și culturii. O cunoaștere solidă deschide uși în toată lumea și oferă acces la milioane de resurse educaționale.</p>
+      </div>
+      <div class="why-card c-gd">
+        <div class="why-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h3>Ce dobândim?</h3>
+        <p>Comunicare fluentă, gândire critică prin literatura mondială, abilități de prezentare și argumentare — toate esențiale pentru viitorul academic și profesional.</p>
+      </div>
+      <div class="why-card c-ac">
+        <div class="why-icon"><i class="fas fa-globe"></i></div>
+        <h3>Ce resurse avem?</h3>
+        <p>Materiale autentice, platforme digitale interactive și o bibliotecă bogată de literatură engleză și americană pentru toate nivelurile.</p>
+      </div>
+      <div class="why-card c-dk">
+        <div class="why-icon"><i class="fas fa-trophy"></i></div>
+        <h3>Unde participăm?</h3>
+        <p>Olimpiade județene și naționale, concursuri de dezbateri, serbări tematice și proiecte culturale care celebrează lumea vorbitoare de engleză.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHERS -->
+<section id="profesori">
+  <div class="container">
+    <p class="section-tag reveal"><i class="fas fa-chalkboard-teacher"></i> Echipa noastră</p>
+    <h2 class="section-title reveal">Profesori dedicați,<br>elevi inspirați</h2>
+    <p class="section-desc reveal">O catedră cu experiență bogată, pasionată de limba engleză și de succesul fiecărui elev.</p>
+
+    <span class="dept-label en reveal"><i class="fas fa-book-open" style="margin-right:6px"></i> Catedra de Limbă Engleză</span>
+    <div class="teachers-row">
+      <div class="teacher-card reveal">
+        <div class="teacher-avatar-placeholder">KA</div>
+        <div class="teacher-info">
+          <h4>Kis-Juhasz Annamaria</h4>
+          <span>Profesor de Engleză</span>
+        </div>
+      </div>
+      <div class="teacher-card reveal delay-1">
+        <div class="teacher-avatar-placeholder">BC</div>
+        <div class="teacher-info">
+          <h4>Buju Carmen</h4>
+          <span>Profesor de Engleză</span>
+        </div>
+      </div>
+      <div class="teacher-card reveal delay-2">
+        <div class="teacher-avatar-placeholder">CC</div>
+        <div class="teacher-info">
+          <h4>Cunțan Carmen</h4>
+          <span>Profesor de Engleză</span>
+        </div>
+      </div>
+    </div>
+    <div class="teachers-row" style="grid-template-columns:repeat(2,1fr);max-width:680px;">
+      <div class="teacher-card reveal">
+        <div class="teacher-avatar-placeholder">MM</div>
+        <div class="teacher-info">
+          <h4>Muntean Monica</h4>
+          <span>Profesor de Engleză</span>
+        </div>
+      </div>
+      <div class="teacher-card reveal delay-1">
+        <div class="teacher-avatar-placeholder">FR</div>
+        <div class="teacher-info">
+          <h4>Fodor Rodica</h4>
+          <span>Profesor de Engleză</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section style="background:var(--white);">
+  <div class="container">
+    <div class="activities-layout">
+      <div class="activities-text">
+        <p class="section-tag en reveal"><i class="fas fa-rocket"></i> Ce facem</p>
+        <h2 class="section-title reveal">Dincolo de manual</h2>
+        <p class="section-desc reveal">Engleza prinde viață prin activități creative, serbări, concursuri și proiecte culturale autentice.</p>
+      </div>
+      <div class="activities-feature">
+        <div class="activity-item reveal">
+          <span class="activity-num">01</span>
+          <div class="activity-content">
+            <h4>Serbări & Spectacole</h4>
+            <p>Romeo & Juliet, Fantasy, Crăciun — teatru și performanță în limba engleză.</p>
+          </div>
+        </div>
+        <div class="activity-item reveal delay-1">
+          <span class="activity-num">02</span>
+          <div class="activity-content">
+            <h4>Concursuri & Olimpiade</h4>
+            <p>Participăm la olimpiade județene și naționale de limbă engleză.</p>
+          </div>
+        </div>
+        <div class="activity-item reveal delay-2">
+          <span class="activity-num">03</span>
+          <div class="activity-content">
+            <h4>Sărbători Culturale</h4>
+            <p>Halloween, Thanksgiving, Christmas — celebrăm cultura anglofon autentică.</p>
+          </div>
+        </div>
+        <div class="activity-item reveal delay-3">
+          <span class="activity-num">04</span>
+          <div class="activity-content">
+            <h4>Proiecte Creative</h4>
+            <p>Inventatori, steaguri, animale — proiecte tematice care combină engleza cu cunoașterea lumii.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="media-section" id="galerie">
+  <div class="container">
+    <p class="section-tag ac reveal"><i class="fas fa-images"></i> Galerie</p>
+    <h2 class="section-title reveal">Momente din activitățile<br>noastre</h2>
+    <p class="section-desc reveal">Serbări, proiecte și momente speciale din viața catedrei de engleză.</p>
+
+    <!-- Serbări -->
+    <p class="gallery-label en reveal">🎭 Serbări & Spectacole</p>
+    <div class="media-grid reveal">
+      <div class="media-item">
+        <img src="https://raw.githubusercontent.com/anaipatescu12/limba-engleza/main/serbare_romeo1.jpeg" alt="Romeo și Julieta 1">
+        <div class="media-label">Romeo & Juliet</div>
+      </div>
+      <div class="media-item">
+        <img src="https://raw.githubusercontent.com/anaipatescu12/limba-engleza/main/serbare_romeo2.jpeg" alt="Romeo și Julieta 2">
+        <div class="media-label">Romeo & Juliet</div>
+      </div>
+      <div class="media-item">
+        <img src="https://raw.githubusercontent.com/anaipatescu12/limba-engleza/main/serbare_romeo3.jpeg" alt="Romeo și Julieta 3">
+        <div class="media-label">Romeo & Juliet</div>
+      </div>
+      <div class="media-item">
+        <img src="https://raw.githubusercontent.com/anaipatescu12/limba-engleza/main/serbare_fantasy.jpeg" alt="Serbare Fantasy">
+        <div class="media-label">Serbare Fantasy</div>
+      </div>
+      <div class="media-item">
+        <img src="https://raw.githubusercontent.com/anaipatescu12/limba-engleza/main/serbare_craciun.jpeg" alt="Serbare Craciun">
+        <div class="media-label">Crăciun</div>
+      </div>
+    </div>
+
+    <!-- Crăciun -->
+    <p class="gallery-label gd reveal">🎄 Sărbători</p>
+    <div class="media-grid reveal">
+      <div class="media-item">
+        <img src="https://raw.githubusercontent.com/anaipatescu12/limba-engleza/main/serbare_craciun2.jpeg" alt="Serbare Craciun 2">
+        <div class="media-label">Serbare de Crăciun</div>
+      </div>
+      <div class="media-item">
+        <img src="https://raw.githubusercontent.com/anaipatescu12/limba-engleza/main/serbare_craciun3.jpeg" alt="Serbare Craciun 3">
+        <div class="media-label">Serbare de Crăciun</div>
+      </div>
+      <div class="media-item">
+        <img src="https://raw.githubusercontent.com/anaipatescu12/limba-engleza/main/om_de_zapada_english.jpeg" alt="Om de zapada">
+        <div class="media-label">Omul de Zăpadă</div>
+      </div>
+      <div class="media-item">
+        <img src="https://raw.githubusercontent.com/anaipatescu12/limba-engleza/main/preparingforchistmas.jpeg" alt="Preparing for Christmas">
+        <div class="media-label">Preparing for Christmas</div>
+      </div>
+      <div class="media-item">
+        <img src="https://raw.githubusercontent.com/anaipatescu12/limba-engleza/main/thanksgiving.jpeg" alt="Thanksgiving">
+        <div class="media-label">Thanksgiving</div>
+      </div>
+    </div>
+
+    <!-- Proiecte -->
+    <p class="gallery-label ac reveal">📌 Proiecte & Activități</p>
+    <div class="media-grid reveal">
+      <div class="media-item">
+        <img src="https://raw.githubusercontent.com/anaipatescu12/limba-engleza/main/inventatori_engleza.jpeg" alt="Inventatori">
+        <div class="media-label">Inventatori celebri</div>
+      </div>
+      <div class="media-item">
+        <img src="https://raw.githubusercontent.com/anaipatescu12/limba-engleza/main/theflags.jpeg" alt="Steaguri">
+        <div class="media-label">The Flags</div>
+      </div>
+      <div class="media-item">
+        <img src="https://raw.githubusercontent.com/anaipatescu12/limba-engleza/main/animals1.jpeg" alt="Animals 1">
+        <div class="media-label">Animals</div>
+      </div>
+      <div class="media-item">
+        <img src="https://raw.githubusercontent.com/anaipatescu12/limba-engleza/main/animals2.jpeg" alt="Animals 2">
+        <div class="media-label">Animals</div>
+      </div>
+      <div class="media-item">
+        <img src="https://raw.githubusercontent.com/anaipatescu12/limba-engleza/main/mycupof.jpeg" alt="My Cup Of">
+        <div class="media-label">My Cup Of...</div>
+      </div>
+    </div>
+
+    <!-- Momente vesele -->
+    <p class="gallery-label en reveal">😄 Momente vesele</p>
+    <div class="media-grid reveal">
+      <div class="media-item">
+        <img src="https://raw.githubusercontent.com/anaipatescu12/limba-engleza/main/having_fun.jpeg" alt="Having fun">
+        <div class="media-label">Having Fun</div>
+      </div>
+
+      <!-- Native video -->
+      <div class="media-item">
+        <video controls style="width:100%;height:100%;object-fit:cover;display:block;">
+          <source src="https://raw.githubusercontent.com/anaipatescu12/limba-engleza/main/game.mp4" type="video/mp4">
+        </video>
+        <div class="media-label">▶ Game</div>
+      </div>
+
+      <!-- Native video 2 -->
+      <div class="media-item">
+        <video controls style="width:100%;height:100%;object-fit:cover;display:block;">
+          <source src="https://raw.githubusercontent.com/anaipatescu12/limba-engleza/main/rockingaround.mp4" type="video/mp4">
+        </video>
+        <div class="media-label">▶ Rocking Around</div>
+      </div>
+
+      <!-- YouTube embed -->
+      <div class="media-item" style="grid-column:span 2;">
+        <div class="video-embed-box">
+          <iframe
+            src="https://www.youtube.com/embed/0czmybzm3W4"
+            title="YouTube video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="media-label">▶ YouTube</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="elevi">
+  <div class="container">
+    <p class="section-tag reveal"><i class="fas fa-quote-left"></i> Vocea elevilor</p>
+    <h2 class="section-title reveal" style="margin-bottom:48px;">Ce spun ei despre<br>orele noastre</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <blockquote>„Orele de engleză sunt mereu interesante. Îmi place că învățăm prin jocuri și activități creative."</blockquote>
+        <div class="testimonial-author">
+          <div class="author-dot" style="background:var(--en)">A</div>
+          <span>Elev · Clasa 10A</span>
+        </div>
+      </div>
+      <div class="testimonial-card reveal delay-1">
+        <blockquote>„Serbările în engleză sunt experiențe unice. Am jucat în Romeo & Juliet și a fost de neuitat!"</blockquote>
+        <div class="testimonial-author">
+          <div class="author-dot" style="background:var(--gold-mid)">M</div>
+          <span>Elevă · Clasa 11B</span>
+        </div>
+      </div>
+      <div class="testimonial-card reveal delay-2">
+        <blockquote>„Datorită orelor de engleză am reușit la olimpiadă și mă simt pregătit pentru facultate în străinătate."</blockquote>
+        <div class="testimonial-author">
+          <div class="author-dot" style="background:var(--accent)">R</div>
+          <span>Elev · Clasa 12A</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-logo">Limba Engleză</div>
+    <p><strong>Liceul Teoretic „Ana Ipătescu"</strong> · Gherla, Cluj</p>
+    <p style="margin-top:8px">© 2026 · Toate drepturile rezervate</p>
+  </div>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const siblings = Array.from(e.target.parentElement?.children || []).filter(c => c.classList.contains('reveal'));
+      const idx = siblings.indexOf(e.target);
+      e.target.style.transitionDelay = (idx * 80) + 'ms';
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.boxShadow = window.scrollY > 20 ? '0 1px 20px rgba(0,0,0,0.08)' : 'none';
+});
+</script>
+</body>
+</html>
